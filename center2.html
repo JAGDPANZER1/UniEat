@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Бронирование столиков</title>
+</head>
+
+<body>
+
+  <section>
+    <p>Выберите этаж:</p>
+    <select id="floor">
+      <option value="1">Первый этаж</option>
+      <option value="3">Третий этаж</option>
+    </select>
+
+    <p>Выберите номер столика (от 1 до 99):</p>
+    <input type="number" id="tableTens" min="0" max="9" placeholder="Десятки">
+    <input type="number" id="tableUnits" min="0" max="9" placeholder="Единицы">
+
+    <p>Выберите месяц и дату бронирования:</p>
+    <label for="reservationMonth">Месяц:</label>
+    <select id="reservationMonth" onchange="updateDays()">
+      <option value="1">Январь</option>
+            <option value="2">Февраль</option>
+            <option value="3">Март</option>
+            <option value="4">Апрель</option>
+            <option value="5">Май</option>
+            <option value="6">Июнь</option>
+            <option value="7">Июль</option>
+            <option value="8">Август</option>
+            <option value="9">Сентябрь</option>
+            <option value="10">Октябрь</option>
+            <option value="11">Ноябрь</option>
+            <option value="12">Декабрь</option>
+    </select>
+
+    <label for="reservationDay">День:</label>
+    <select id="reservationDay" name="reservationDay">
+            <!-- Здесь предполагается, что в каждом месяце по 31 дню -->
+            <!-- Добавьте оставшиеся дни в зависимости от месяца -->
+            <!-- Дни добавлены для примера, вы можете изменить их в соответствии с вашими требованиями -->
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+           <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+            <option value="29">29</option>
+            <option value="30">30</option>
+            <option value="31">31</option>
+        </select>
+
+    <p>Выберите время бронирования:</p>
+     <label for="reservationHour">Час:</label>
+        <select id="reservationHour" name="reservationHour">
+            <option value="9">9:00</option>
+            <option value="10">10:00</option>
+            <option value="11">11:00</option>
+            <option value="12">12:00</option>
+            <option value="13">13:00</option>
+            <option value="14">14:00</option>
+            <option value="15">15:00</option>
+            <option value="16">16:00</option>
+            <option value="17">17:00</option>
+            <option value="18">18:00</option>
+            <option value="19">19:00</option>
+            <option value="20">20:00</option>
+            <option value="21">21:00</option>
+        </select>
+        <label for="reservationMinute">Минуты:</label>
+        <select id="reservationMinute" name="reservationMinute">
+            <option value="0">00</option>
+            <option value="15">15</option>
+      <option value="30">30</option>
+<option value="45">45</option>
+
+        </select>
+
+    <br>
+    <button onclick="reserveTable()">Забронировать столик</button>
+    <p id="confirmationMessage"></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2023 Uni Eats</p>
+  </footer>
+
+  <script>
+    function updateDays() {
+      const monthSelect = document.getElementById('reservationMonth');
+      const daySelect = document.getElementById('reservationDay');
+      const selectedMonth = parseInt(monthSelect.value);
+      const daysInMonth = new Date(2023, selectedMonth, 0).getDate();
+
+      // Remove existing options
+      daySelect.innerHTML = '';
+
+      // Add new day options
+      for (let i = 1; i <= daysInMonth; i++) {
+        const option = document.createElement('option');
+        option.value = i;
+        option.textContent = i;
+        daySelect.appendChild(option);
+      }
+    }
+
+    function reserveTable() {
+      const floor = document.getElementById('floor').value;
+      const tableTens = document.getElementById('tableTens').value;
+      const tableUnits = document.getElementById('tableUnits').value;
+      const reservationMonth = document.getElementById('reservationMonth').value;
+      const reservationDay = document.getElementById('reservationDay').value;
+      const reservationHour = document.getElementById('reservationHour').value;
+      const reservationMinute = document.getElementById('reservationMinute').value;
+
+      // Проверка на существование столика
+      if (tableTens < 0 || tableTens > 9 || tableUnits < 0 || tableUnits > 9) {
+        document.getElementById('confirmationMessage').innerHTML = "Такого столика не существует!";
+        return;
+      }
+
+      // Проверка наличия оставшихся месяцев
+      if (reservationMonth < 1 || reservationMonth > 12) {
+        document.getElementById('confirmationMessage').innerHTML = "Выберите корректный месяц!";
+        return;
+      }
+
+      // Ваш код для бронирования столика
+      // ...
+
+      // Вывод сообщения о бронировании
+      document.getElementById('confirmationMessage').innerHTML =
+        "Ваш столик номер " + tableTens + tableUnits + " на " + floor + " этаже забронирован!";
+	setTimeout(function() {
+            window.history.back(); // Go back to the previous page
+        }, 5000);
+    }
+  </script>
+
+
+</body>
+
+</html>

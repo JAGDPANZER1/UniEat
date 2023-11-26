@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... (your existing head content) ... -->
+    <style>
+        /* ... (your existing styles) ... */
+        .rating {
+            unicode-bidi: bidi-override;
+            direction: rtl;
+            text-align: center;
+        }
+
+        .rating > input {
+            display: none;
+        }
+
+        .rating > label {
+            display: inline-block;
+            padding: 5px;
+            font-size: 24px;
+            color: #777777;
+            cursor: pointer;
+        }
+
+        .rating > label:hover,
+        .rating > input:checked ~ label {
+            color: #ffcc00;
+        }
+
+        #thank-you-message {
+            display: none;
+            text-align: center;
+            font-size: 18px;
+            color: #4CAF50;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body background="hhhh.jpeg">
+
+    <!-- ... (your existing body content) ... -->
+
+    <section id="reviews">
+        <h2>Отзывы и рейтинги</h2>
+        
+        <!-- Add the review form with star rating -->
+        <form id="reviewForm">
+            <label for="review">Оставьте ваш отзыв:</label>
+            <textarea id="review" name="review" rows="4" cols="50"></textarea>
+            
+            <p>Оцените качество обслуживания:</p>
+            
+            <div class="rating">
+                <input type="radio" id="star5" name="rating" value="5" /><label for="star5">&#9733;</label>
+                <input type="radio" id="star4" name="rating" value="4" /><label for="star4">&#9733;</label>
+                <input type="radio" id="star3" name="rating" value="3" /><label for="star3">&#9733;</label>
+                <input type="radio" id="star2" name="rating" value="2" /><label for="star2">&#9733;</label>
+                <input type="radio" id="star1" name="rating" value="1" /><label for="star1">&#9733;</label>
+            </div>
+
+            <input type="submit" value="Отправить отзыв">
+        </form>
+
+        <!-- Thank you message -->
+        <div id="thank-you-message">Спасибо вам за ваше мнение!</div>
+    </section>
+
+    <!-- ... (your existing body content) ... -->
+
+    <footer>
+        <p>&copy; 2023 Uni Eats</p>
+    </footer>
+
+   <script>
+    document.getElementById("reviewForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the default form submission
+        
+        // Display the thank-you message
+        document.getElementById("thank-you-message").style.display = "block";
+
+        // Redirect after 5 seconds
+        setTimeout(function() {
+            window.history.back(); // Go back to the previous page
+        }, 5000); // 5000 milliseconds (5 seconds)
+    });
+</script>
+
+</body>
+</html>

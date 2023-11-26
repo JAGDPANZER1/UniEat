@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uni Eats</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('hhhh.jpeg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        header, nav, section, footer {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        #notification {
+            display: none;
+            background-color: #4CAF50;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            width: 100%;
+        }
+
+        .rating {
+            unicode-bidi: bidi-override;
+            direction: rtl;
+            text-align: center;
+        }
+
+        .rating > input {
+            display: none;
+        }
+
+        .rating > label {
+            display: inline-block;
+            padding: 5px;
+            font-size: 24px;
+            color: #777777;
+            cursor: pointer;
+        }
+
+        .rating > label:hover,
+        .rating > input:checked ~ label {
+            color: #ffcc00;
+        }
+
+        #thank-you-message {
+            display: none;
+            text-align: center;
+            font-size: 18px;
+            color: #4CAF50;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Uni Eats</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#menu">Меню</a></li>
+            <li><a href="#order">Заказ и оплата</a></li>
+            <li><a href="#reservation">Бронирование столиков</a></li>
+            <li><a href="#notifications">Уведомления</a></li>
+            <li><a href="#reviews">Отзывы и рейтинги</a></li>
+        </ul>
+    </nav>
+
+    <section id="menu">
+        <a href="file:///C:/Users/obays/Desktop/%D0%9D%D0%BE%D0%B2%D0%B0%D1%8F%20%D0%BF%D0%B0%D0%BF%D0%BA%D0%B0%20(2)/dada.html"><h2>Меню</h2></a>
+        <!-- Здесь добавьте элементы для отображения меню -->
+    </section>
+
+    <section id="order">
+        <a href="file:///C:/Users/obays/Desktop/%D0%9D%D0%BE%D0%B2%D0%B0%D1%8F%20%D0%BF%D0%B0%D0%BF%D0%BA%D0%B0%20(2)/center1.html"><h2>Заказ и оплата</h2></a>
+        <!-- Здесь добавьте форму для заказа и оплаты -->
+    </section>
+
+    <section id="reservation">
+        <a href="file:///C:/Users/obays/Desktop/%D0%9D%D0%BE%D0%B2%D0%B0%D1%8F%20%D0%BF%D0%B0%D0%BF%D0%BA%D0%B0%20(2)/center2.html"><h2>Бронирование столиков</h2></a>
+        <!-- Здесь добавьте форму для бронирования столиков -->
+    </section>
+
+    
+        <div id="notification">Ваш заказ готов!</div>
+        <script>
+            function showNotification() {
+                var notification = document.getElementById("notification");
+                notification.style.display = "block";
+                setTimeout(function () {
+                    notification.style.display = "none";
+                }, 5000); // Скрыть уведомление через 5 секунд
+            }
+
+            // Вызов функции при необходимости, например, при готовности заказа
+            // Пример: showNotification();
+        </script>
+    </section>
+
+    <section id="reviews">
+        <a href="file:///C:/Users/obays/Desktop/%D0%9D%D0%BE%D0%B2%D0%B0%D1%8F%20%D0%BF%D0%B0%D0%BF%D0%BA%D0%B0%20(2)/a_otzyv.html"><h2>Отзывы и рейтинги</h2></a>
+       
+
+</body>
+</html>

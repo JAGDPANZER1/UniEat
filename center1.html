@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Заказ</title>
+  <style>
+    #messageContainer {
+      display: none;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Меню</h2>
+
+  <form id="orderForm">
+   <label for="item1">Донер - 1290тг:</label>
+    <input type="number" id="item1" name="item1" min="0" value="0" onchange="calculateTotal()"><br><br>
+     <label for="item2">Пиде - 990тг:</label>
+    <input type="number" id="item2" name="item2" min="0" value="0" onchange="calculateTotal()"><br><br>
+ <label for="item3">Самса с курицей/сыром - 320тг:</label>
+    <input type="number" id="item3" name="item3" min="0" value="0" onchange="calculateTotal()"><br><br>
+ <label for="item4">Почо - 220тг:</label>
+    <input type="number" id="item4" name="item4" min="0" value="0" onchange="calculateTotal()"><br><br>
+ <label for="item5">Торт Прага - 500тг:</label>
+    <input type="number" id="item5" name="item5" min="0" value="0" onchange="calculateTotal()"> <br><br>
+<label for="item6">Торт Сникерс - 550тг:</label>
+    <input type="number" id="item6" name="item6" min="0" value="0" onchange="calculateTotal()"><br><br>
+ <label for="item7">Торт Наполеон - 600тг:</label>
+    <input type="number" id="item7" name="item7" min="0" value="0" onchange="calculateTotal()"> <br><br>
+<label for="item8">Пончик - 160тг:</label>
+    <input type="number" id="item8" name="item8" min="0" value="0" onchange="calculateTotal()"><br><br>
+ <label for="item9">Мороженое - 300тг:</label>
+    <input type="number" id="item9" name="item9" min="0" value="0" onchange="calculateTotal()"><br><br>
+ <label for="item10">Чай - 120тг:</label>
+    <input type="number" id="item10" name="item10" min="0" value="0" onchange="calculateTotal()"><br><br>
+ <label for="item11">Кофе - 150тг:</label>
+    <input type="number" id="item11" name="item11" min="0" value="0" onchange="calculateTotal()"><br><br>
+ <label for="item12">Fuse tea - 340тг:</label>
+    <input type="number" id="item12" name="item12" min="0" value="0" onchange="calculateTotal()"><br><br>
+ <label for="item13">Газированные напитки - 380тг:</label>
+    <input type="number" id="item13" name="item13" min="0" value="0" onchange="calculateTotal()"><br><br>
+
+    <p>Сумма заказа: <span id="total">0</span></p>
+
+    <label for="paymentMethod">Выберите метод оплаты:</label>
+    <select id="paymentMethod">
+      <option value="Наличными">Наличные</option>
+      <option value="Картой">Карта</option>
+    </select>
+
+    <button type="button" onclick="makePayment()">Оплатить</button>
+
+    <div id="messageContainer"></div>
+  </form>
+
+  <script>
+    function calculateTotal() {
+      var total = 0;
+
+      // Суммируем стоимость каждого товара умноженную на его количество
+       var quantity1 = parseInt(document.getElementById("item1").value) || 0;
+      var quantity2 = parseInt(document.getElementById("item2").value) || 0;
+      var quantity3 = parseInt(document.getElementById("item3").value) || 0;
+       var quantity4 = parseInt(document.getElementById("item4").value) || 0;
+      var quantity5 = parseInt(document.getElementById("item5").value) || 0;
+      var quantity6 = parseInt(document.getElementById("item6").value) || 0;
+       var quantity7 = parseInt(document.getElementById("item7").value) || 0;
+      var quantity8 = parseInt(document.getElementById("item8").value) || 0;
+      var quantity9 = parseInt(document.getElementById("item9").value) || 0;
+      var quantity10 = parseInt(document.getElementById("item10").value) || 0;
+      var quantity11 = parseInt(document.getElementById("item11").value) || 0;
+      var quantity12 = parseInt(document.getElementById("item12").value) || 0;
+       var quantity13 = parseInt(document.getElementById("item13").value) || 0;
+      total=quantity1*1290+quantity2*990+quantity3*320+quantity4*220+quantity5*500+quantity6*550+quantity7*600+quantity8*160+quantity9*300+quantity10*120+quantity11*150+quantity12*340+quantity13*380;
+
+
+      // Обновляем сумму заказа
+      document.getElementById("total").innerText = total;
+    }
+
+    function makePayment() {
+      var paymentMethod = document.getElementById("paymentMethod").value;
+      var totalAmount = parseInt(document.getElementById("total").innerText);
+      var messageContainer = document.getElementById("messageContainer");
+
+      if (totalAmount > 0) {
+        showMessage("Ваш заказ принят. Ожидайте.");
+
+        setTimeout(function () {
+          showMessage("Ваш заказ готов.");
+        }, 20000); // 20 секунд после исчезновения первого уведомления
+      } else {
+        showMessage("Выберите товары для заказа.");
+      }
+    }
+
+    function showMessage(message) {
+      var messageContainer = document.getElementById('messageContainer');
+      messageContainer.innerText = message;
+      messageContainer.style.display = 'block';
+
+      // Hide the message after 5 seconds (adjust as needed)
+      setTimeout(function () {
+        messageContainer.style.display = 'none';
+      }, 5000);
+    }
+  </script>
+
+</body>
+
+</html>
